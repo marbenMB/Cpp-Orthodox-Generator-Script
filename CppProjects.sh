@@ -5,6 +5,8 @@ CLASS=""
 OPTION=""
 
 /usr/bin/clear
+echo -n "Current Directory : "
+pwd
 
 #PATH
 echo "*******************************************************"
@@ -37,20 +39,20 @@ then
 		echo "// ****************************************************** //" >> $CLASS.hpp
 
 		printf "\nclass	$CLASS
-	{
-		public	:
-			$CLASS ();
-			$CLASS ($CLASS const &obj);
-			~$CLASS ();
-			$CLASS &operator= (const $CLASS &obj);
+{
+	public	:
+		$CLASS ();
+		$CLASS ($CLASS const &obj);
+		~$CLASS ();
+		$CLASS &operator= (const $CLASS &obj);
 
-		private	:
-			//	private attributes.
-	};\n\n" >> $CLASS.hpp
+	private	:
+		//	private attributes.
+};\n\n" >> $CLASS.hpp
 
 		printf "// ******************************************************** //
-	//                        FUNCTIONS                        //
-	// ****************************************************** //\n\n" >> $CLASS.hpp
+//                        FUNCTIONS                        //
+// ****************************************************** //\n\n" >> $CLASS.hpp
 
 		echo "#endif" >> $CLASS.hpp
 
@@ -58,27 +60,33 @@ then
 
 		printf "#include \"$CLASS.hpp\"
 
-	$CLASS::$CLASS()
-	{
-		std::cout << \"Default Constructor Called\" << std::endl;
-	}
+$CLASS::$CLASS()
+{
+	std::cout << \"$CLASS : Default Constructor Called\" << std::endl;
+}
 
-	$CLASS::~$CLASS()
-	{
-		std::cout << \"Destructor Called\" << std::endl;
-	}
+$CLASS::~$CLASS()
+{
+	std::cout << \"$CLASS : Destructor Called\" << std::endl;
+}
 
-	$CLASS::$CLASS($CLASS const &obj)
-	{
-		std::cout << \"Copy Constructor Called\" << std::endl;
-	}
+$CLASS::$CLASS($CLASS const &obj)
+{
+	std::cout << \"Copy Constructor Called\" << std::endl;
+	if (this != &obj)
+		*this = obj;
+}
 
-	$CLASS	&$CLASS::operator= (const $CLASS &obj)
+$CLASS	&$CLASS::operator= (const $CLASS &obj)
+{
+	std::cout << \"Copy Assignment Operator Called\" << std::endl;
+	if (this != &obj)
 	{
-		std::cout << \"Copy Assignment Operator Called\" << std::endl;
-		
-		return (*this);
-	}\n" > $CLASS.cpp
+		// ...
+	}
+	return (*this);
+}\n" > $CLASS.cpp
+
 	echo -n "Create main.cpp and Makefile [y/n] : "
 	read OPTION
 	if [ $OPTION == "y" ]
@@ -97,7 +105,7 @@ all : \$(NAME) \n
 \$(NAME) : \$(OBJ)
 	\$(CC) \$(CXXFLAGS) \$(STD) \$(OBJ) -o \$(NAME) \n\n" >> Makefile
 
-		echo %.o : %.cpp "\$(INC)" > Makefile
+		echo %.o : %.cpp "\$(INC)" >> Makefile
 		printf "	\$(CC) \$(CXXFLAGS) -c \$< -o \$@ \n
 clean :
 	rm -rf \$(OBJ) \n
