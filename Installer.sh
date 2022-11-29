@@ -17,7 +17,7 @@ else
 	echo -e "\x1b[31m ... Update FAILED ... \033[m"
 fi
 
-echo "alias CppGen='bash ~/Desktop/MakeGit_Script/CppProjects.sh'" >> ~/.zshrc
+echo "alias CppGen='bash ~/MakeGit_Script/CppProjects.sh'" >> ~/.zshrc
 if [ $? == "0" ]
 then
 	echo -e "\x1b[32m ... Installation DONE ... \033[m"

@@ -1,12 +1,14 @@
 #!/bin/bash
 
+git pull
+clear
+echo -n "Current Directory : "
+pwd
+
+#Variables
 PATH=""
 CLASS=""
 OPTION=""
-
-/usr/bin/clear
-echo -n "Current Directory : "
-pwd
 
 #PATH
 echo "*******************************************************"
