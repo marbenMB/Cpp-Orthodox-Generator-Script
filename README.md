@@ -1,5 +1,5 @@
 # MakeGit_Script
-#### Created by : [marbenMB](https://github.com/marbenMB)
+### Created by : [marbenMB](https://github.com/marbenMB)
 ---
 ## Shell script to make your projects and handle the git too ; you can add , commit and push you changes with a simple keywords and steps.
 
