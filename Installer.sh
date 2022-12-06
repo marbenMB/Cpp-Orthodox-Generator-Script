@@ -71,7 +71,8 @@ cat ~/.zshrc | grep -c CppGen 1> /dev/null
 
 if [ $? == "1" ]
 then
-	echo "alias CppGen='bash ~/MakeGit_Script/Cpp_OrthodoxGenerator.sh'" >> ~/.zshrc
+	cp Cpp_OrthodoxGenerator.sh ~
+	echo "alias CppGen='bash ~/Cpp_OrthodoxGenerator.sh'" >> ~/.zshrc
 
 	if [ $? == "0" ]
 	then
