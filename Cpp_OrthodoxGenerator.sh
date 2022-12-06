@@ -24,7 +24,7 @@ OPTION=""
 
 #PATH
 echo "*******************************************************"
-echo -n "Enter Path Of Creation : "
+echo -ne "\x1b[33mEnter Path Of Creation : \033[m"
 read PATH
 
 if [ -d $PATH ]
@@ -32,9 +32,9 @@ then
 	cd $PATH
 	echo "Changing Directory to : " $PATH
 	echo "*******************************************************"
-	echo -n "Enter Class Name : "
+	echo -ne "\x1b[33mEnter Class Name : \033[m"
 	read CLASS
-	if [ $CLASS != "" ]
+	if [ $CLASS != "" ] 2> /dev/null
 	then
 		echo "Class Name : " $CLASS
 		echo "*******************************************************"
@@ -101,9 +101,9 @@ $CLASS	&$CLASS::operator= (const $CLASS &obj)
 	return (*this);
 }\n" > $CLASS.cpp
 
-	echo -n "Create main.cpp and Makefile [y/n] : "
+	echo -ne "\x1b[33mCreate main.cpp and Makefile \033[m[\x1b[32my\033[m/\x1b[31mn\033[m] : "
 	read OPTION
-	if [ $OPTION == "y" ]
+	if [ $OPTION == "y" ] || [ $OPTION == "yes" ]
 	then
 		/usr/bin/touch main.cpp Makefile
 		#	***		Printing To Makefile	***
@@ -138,10 +138,18 @@ int main()
 	return (0);
 }\n" > main.cpp
 	fi
-		echo "+> " $CLASS " : Files Created !"
+		printf "\n░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
+░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
+█████╗█████╗█████╗█████╗█████╗█████╗█████╗
+╚════╝╚════╝╚════╝╚════╝╚════╝╚════╝╚════╝
+░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
+░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░\n\n"
+		echo -e "\x1b[32m+> " $CLASS " : Files Created !\033[m"
 	else
-		echo "No Class Name Entred"
+		echo -e "______________________________________\n"
+		echo -e "\x1b[31mNo Class Name Entred\033[m\n"
 	fi
 	else
-		echo "***" $PATH  " : ** not found !! **"
+		echo -e "______________________________________\n"
+		echo -e "\x1b[31m*** $PATH : ** Path not found !! **\033[m\n"
 fi
