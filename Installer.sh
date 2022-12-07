@@ -8,6 +8,7 @@ pulling () {
 	loading &
 	pid=$!
 	git pull 1> /dev/null
+	sleep 2
 	pullCheck
 	kill $pid
 	wait $pid 2>/dev/null

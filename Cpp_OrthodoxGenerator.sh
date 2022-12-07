@@ -61,7 +61,7 @@ then
 		$CLASS &operator= (const $CLASS &obj);
 
 	private	:
-		//	private attributes.
+		//	DataType	attributes.
 };\n\n" >> $CLASS.hpp
 
 		printf "// ******************************************************** //
@@ -96,7 +96,8 @@ $CLASS	&$CLASS::operator= (const $CLASS &obj)
 	std::cout << \"Copy Assignment Operator Called\" << std::endl;
 	if (this != &obj)
 	{
-		// ...
+		//	this->attributes = obj.attributes;
+		//	...
 	}
 	return (*this);
 }\n" > $CLASS.cpp
