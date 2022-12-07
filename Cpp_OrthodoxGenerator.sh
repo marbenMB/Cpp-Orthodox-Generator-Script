@@ -1,8 +1,5 @@
 #!/bin/bash
 
-git pull 1> /dev/null
-clear
-
 printf "\n"
 printf "░█████╗░██████╗░██████╗░  ░██████╗░███████╗███╗░░██╗
 ██╔══██╗██╔══██╗██╔══██╗  ██╔════╝░██╔════╝████╗░██║
@@ -27,7 +24,7 @@ echo "*******************************************************"
 echo -ne "\x1b[33mEnter Path Of Creation : \033[m"
 read PATH
 
-if [ -d $PATH ]
+if [ -d $PATH ] &> /dev/null
 then 
 	cd $PATH
 	echo "Changing Directory to : " $PATH
@@ -104,7 +101,7 @@ $CLASS	&$CLASS::operator= (const $CLASS &obj)
 
 	echo -ne "\x1b[33mCreate main.cpp and Makefile \033[m[\x1b[32my\033[m/\x1b[31mn\033[m] : "
 	read OPTION
-	if [ $OPTION == "y" ] || [ $OPTION == "yes" ]
+	if [ $OPTION == "y" ] || [ $OPTION == "yes" ] &> /dev/null
 	then
 		/usr/bin/touch main.cpp Makefile
 		#	***		Printing To Makefile	***
