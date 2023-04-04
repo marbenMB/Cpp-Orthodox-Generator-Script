@@ -107,7 +107,7 @@ $CLASS	&$CLASS::operator= (const $CLASS &obj)
 		#	***		Printing To Makefile	***
 
 			printf "NAME = $CLASS \n
-CXXFLAGS = -Wall -Wextra -Werror \n
+CXXFLAGS = -Wall -Wextra -Werror -fsanitize=address\n
 CC = c++ \n
 STD = -std=c++98 \n
 SRC = $CLASS.cpp main.cpp \n
